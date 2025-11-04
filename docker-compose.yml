@@ -18,7 +18,7 @@ services:
     build:
       context: ./client
       args:
-        NEXT_PUBLIC_API_URL: http://localhost:8080
+        NEXT_PUBLIC_API_URL: http://localhost:82
     container_name: sgu-frontend
     ports:
       - "3000:3000"
@@ -28,7 +28,7 @@ services:
     depends_on:
       - backend
     environment:
-      NEXT_PUBLIC_API_URL: http://backend:8080
+      NEXT_PUBLIC_API_URL: http://localhost:82
 
   backend:
     image: server:1.0-sgu
@@ -43,7 +43,7 @@ services:
       DB_USER: root
       DB_PASS: root
     ports:
-      - "8081:8080"
+      - "82:82"
     networks:
       - sgu-net
     depends_on:
